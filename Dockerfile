@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.12
 
 ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig/:/usr/lib/pkgconfig/
 
@@ -37,7 +37,7 @@ RUN buildDeps=" \
 	&& make install \
 	&& cd / \
 	&& rm -fr /usr/src/radcli \
-	&& OC_VERSION=`curl "http://www.infradead.org/ocserv/download.html" | sed -n 's/^.*version is <b>\(.*$\)/\1/p'` \
+	&& OC_VERSION=`curl "http://ocserv.gitlab.io/www/download.html" | sed -n 's/^.*version is <b>\(.*$\)/\1/p'` \
 	&& curl -SL "ftp://ftp.infradead.org/pub/ocserv/ocserv-$OC_VERSION.tar.xz" -o ocserv.tar.xz \
 	&& curl -SL "ftp://ftp.infradead.org/pub/ocserv/ocserv-$OC_VERSION.tar.xz.sig" -o ocserv.tar.xz.sig \
 	&& gpg --keyserver pgp.mit.edu --recv-key 96865171 \
