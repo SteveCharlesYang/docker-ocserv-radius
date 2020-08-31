@@ -24,7 +24,7 @@ RUN buildDeps=" \
 	"; \
 	set -x \
 	&& apk update \
-	&& apk add gnutls gnutls-utils iptables libev libintl libnl3 libseccomp linux-pam lz4 openssl readline sed \
+	&& apk add gnutls gnutls-utils iptables libev libintl libnl3 libseccomp linux-pam lz4 lz4-libs openssl readline sed \
 	&& apk add $buildDeps \
 	&& RADCLI_VERSION=`curl "https://api.github.com/repos/radcli/radcli/releases/latest" | sed -n 's/^.*"tag_name": "\(.*\)",$/\1/p'` \
   && curl -SL "https://github.com/radcli/radcli/releases/download/$RADCLI_VERSION/radcli-$RADCLI_VERSION.tar.gz" -o radcli.tar.gz \
